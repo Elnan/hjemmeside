@@ -1,7 +1,14 @@
 "use client";
 
+import { Bruno_Ace_SC } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import "./Footer.css";
+
+const brunoAceSC = Bruno_Ace_SC({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -123,7 +130,7 @@ export default function Footer() {
       >
         <div className="footer-large-content">
           <div className="footer-large-logo">
-            <div className="footer-logo">
+            <div className={`footer-logo ${brunoAceSC.className}`}>
               {"Elnan".split("").map((char, i) => (
                 <span key={i} className={`footer-logo-letter letter-${i + 1}`}>
                   {char}

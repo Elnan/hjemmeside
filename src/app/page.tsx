@@ -46,18 +46,18 @@ export default function Home() {
   const socialMedia = [
     {
       name: "Bluesky",
-      logo: "./bluesky.png",
+      logo: "/bluesky.png",
       link: "https://bsky.app/profile/elbando.bsky.social",
     },
-    { name: "GitHub", logo: "./github2.png", link: "https://github.com/Elnan" },
+    { name: "GitHub", logo: "/github2.png", link: "https://github.com/Elnan" },
     {
       name: "Instagram",
-      logo: "./instagram.png",
+      logo: "/instagram.png",
       link: "https://www.instagram.com/oelnan/",
     },
     {
       name: "LinkedIn",
-      logo: "./linkedin2.png",
+      logo: "/linkedin2.png",
       link: "https://www.linkedin.com/in/olav-elnan-1b184990",
     },
   ];
