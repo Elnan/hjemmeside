@@ -1,0 +1,101 @@
+/* ContactCards styles */
+.contactCardsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 150px;
+  position: relative;
+}
+
+.contactCardRow {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  width: 100%;
+}
+
+.contactCard {
+  flex: 1;
+  min-width: 180px;
+  max-width: 260px;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 2, 0.6, 1);
+  transform: scale(1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected {
+  background: #f3f3f3;
+  border: 2px solid #bdbdbd;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  transform: scale(1.04);
+}
+
+.contactCardIcon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.contactCardTitle {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.contactCardDesc {
+  color: #666;
+  font-size: 15px;
+  text-align: center;
+}
+
+.contactCardFormBox {
+  width: 340px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.1);
+  padding: 28px;
+  margin: 24px auto 0 auto;
+  z-index: 10;
+  opacity: 1;
+  position: relative;
+  overflow: visible;
+  border: 1px solid #f5f5f5;
+}
+
+.contactCardFormLabel {
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.contactCardTextarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 10px 14px;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  resize: vertical;
+}
+
+.contactCardButton {
+  background: #eaeaea;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 6px;
+  transition: background 0.2s;
+}

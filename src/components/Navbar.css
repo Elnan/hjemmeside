@@ -1,0 +1,189 @@
+.navbar {
+  position: relative;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  font-family: "Gowun Dodum", sans-serif;
+  scroll-snap-align: start;
+}
+
+.navbar.scrolled .navbar-top {
+  transform: translateY(-100%);
+}
+
+.navbar-top {
+  position: relative;
+  height: 66vh;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  gap: 20px;
+  font-family: "Bruno Ace SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  box-shadow: 0 4px 6px rgba(114, 114, 114, 0.09);
+}
+
+.navbar-placeholder {
+  height: 70px;
+}
+
+/* Navbar Wrapper */
+.navbar-wrapper {
+  height: 34vh;
+  position: relative; /* Sørg for at elementet er i samme stakkekontekst */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Sørg for at navbar-wrapper ligger over weeklyLogo */
+  overflow: hidden;
+}
+
+.navbar-nav {
+  height: 70px;
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease-in-out, top 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.navbar-nav.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #dbd1c5;
+}
+
+.navbar-nav.footer-expanded-active {
+  border-bottom: none;
+}
+
+.navbar-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.navbar-nav button:hover {
+  color: #555;
+}
+
+.navbar-nav a {
+  text-decoration: none;
+}
+
+/* Logo styling */
+.logo {
+  position: absolute;
+  left: 80px;
+  font-family: "Bruno Ace SC", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Daily & Weekly Links and Logo*/
+
+.headerDaily,
+.headerWeekly {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+  text-decoration: none;
+  color: #666;
+  transition: transform 0.5s ease-in-out;
+  text-decoration: none;
+}
+
+.headerDaily {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  z-index: 1;
+}
+
+.dailyLogo {
+  position: absolute;
+  top: -80px;
+  left: -25px;
+  width: 60px;
+  height: 60px;
+  transform: rotate(-90deg);
+  opacity: 0;
+  transition: transform 0.4s ease-out, opacity 0.15s ease-in-out;
+  z-index: -1;
+}
+
+.headerDaily:hover .dailyLogo {
+  transform: translate(20px, 50px) rotate(0deg);
+  opacity: 0.8;
+}
+
+.headerDaily:hover,
+.headerWeekly:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.headerWeekly {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 3;
+}
+
+.weeklyLogo {
+  position: absolute;
+  top: -19%; /* Juster posisjonen hvis nødvendig */
+  right: 7%; /* Plasser logoen i nærheten av Weeklys-lenken */
+  width: 60px;
+  height: 60px;
+  opacity: 0.8;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Hover-effekt for Weeklys-lenken */
+.headerWeekly:hover + .weeklyLogo {
+  transform: translate(0%, 80%);
+}
+
+/* Sticky navbar-nav endringer når footer-logo er synlig */
+.navbar-nav.footer-active {
+  background: #f5f5f5;
+}
+
+.navbar-nav.footer-active .logo {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar-nav.sticky.footer-almost-full,
+.navbar-nav.footer-almost-full {
+  border-bottom: none;
+  box-shadow: none;
+}
