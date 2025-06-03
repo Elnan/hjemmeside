@@ -47,7 +47,7 @@ export default function Footer() {
           top: entry.boundingClientRect.top,
           isIntersecting: entry.isIntersecting,
         });
-        // Start animasjon når 70% av footeren er synlig
+
         if (entry.intersectionRatio >= 0.4) {
           nav.classList.add("footer-almost-full");
         } else {

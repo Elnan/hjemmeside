@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import ContactCards from "../components/ContactCards";
+import Image from "next/image";
 
 export default function Home() {
   const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
@@ -32,7 +33,6 @@ export default function Home() {
       { threshold: 0.5 } // Trigger når 50% av elementet er synlig
     );
 
-    // Observer trapdoorRefs
     trapdoorRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
@@ -139,10 +139,12 @@ export default function Home() {
                   className={styles.socialLink}
                 >
                   <div className={styles.socialIconContainer}>
-                    <img
+                    <Image
                       src={social.logo}
                       alt={social.name}
                       className={styles.socialIcon}
+                      width={60}
+                      height={60}
                     />
                   </div>
                   <div className={styles.textRectangle}>
@@ -150,10 +152,8 @@ export default function Home() {
                   </div>
                 </a>
 
-                {/* Trapdoor top */}
+                {/* Trapdoors */}
                 <div className={`${styles.trapdoor} ${styles.top}`}></div>
-
-                {/* Trapdoor bottom */}
                 <div className={`${styles.trapdoor} ${styles.bottom}`}></div>
               </li>
             ))}
