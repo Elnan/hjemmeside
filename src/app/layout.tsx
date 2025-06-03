@@ -1,13 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Bruno_Ace_SC, Gowun_Dodum } from "next/font/google";
-
-const brunoAceSC = Bruno_Ace_SC({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
+import { Gowun_Dodum } from "next/font/google";
 
 const gowunDodum = Gowun_Dodum({
   subsets: ["latin"],

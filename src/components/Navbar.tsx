@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -38,7 +39,13 @@ export default function Navbar() {
     <header className="navbar">
       <div ref={topRef} className="navbar-top">
         <a href="#games" className="headerDaily">
-          <img src="/dailyLogo.png" alt="Daily Logo" className="dailyLogo" />
+          <Image
+            src="/dailyLogo.png"
+            alt="Daily Logo"
+            className="dailyLogo"
+            width={40}
+            height={40}
+          />
           Dailys
         </a>
         <h1>Elnan</h1>
@@ -62,10 +69,12 @@ export default function Navbar() {
         <a href="#games" className="headerWeekly">
           Weeklys
         </a>
-        <img
+        <Image
           src="/notteknekteneLogo.png"
           alt="Notteknektene Logo"
           className="weeklyLogo"
+          width={40}
+          height={40}
         />
       </div>
     </header>
