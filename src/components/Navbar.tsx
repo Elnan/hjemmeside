@@ -2,31 +2,43 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { Bruno_Ace_SC } from "next/font/google";
+import { SignInButton, useUser, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import "./Navbar.css";
+
+const brunoAceSC = Bruno_Ace_SC({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const { isSignedIn } = useUser();
+  const pathname = usePathname();
+  const isDailysPage = pathname === "/dailys";
 
   useEffect(() => {
     const handleScroll = () => {
-      if (topRef.current && navRef.current) {
+      if (!isDailysPage && topRef.current && navRef.current) {
         const topBottom = topRef.current.getBoundingClientRect().bottom;
         const navTop = navRef.current.getBoundingClientRect().top;
 
-        // Sticky when navbar-nav reaches the top of the screen
         if (navTop <= 0 && topBottom <= 0) {
           setIsSticky(true);
         } else {
-          setIsSticky(false); // Reset when navbar-top comes back into view
+          setIsSticky(false);
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isDailysPage]);
 
   const handleNavClick = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -35,42 +47,129 @@ export default function Navbar() {
     }
   };
 
+  const dailyButtonContent = (
+    <>
+      <Image
+        src="/dailyLogo.webp"
+        alt="Daily Logo"
+        className="dailyLogo"
+        width={40}
+        height={40}
+      />
+      Dailys
+    </>
+  );
+
+  if (isDailysPage) {
+    return (
+      <header className="navbar">
+        <nav className="navbar-nav sticky">
+          <Link href="/" className={`logo visible ${brunoAceSC.className}`}>
+            Elnan
+          </Link>
+          <ul>
+            <li>
+              <a
+                href="/#home"
+                className="navButton"
+                onClick={(e) => {
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    const section = document.getElementById("home");
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Hjem
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#games"
+                className="navButton"
+                onClick={(e) => {
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    const section = document.getElementById("games");
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Spill
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#contact"
+                className="navButton"
+                onClick={(e) => {
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    const section = document.getElementById("contact");
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Kontakt
+              </a>
+            </li>
+          </ul>
+          {isSignedIn && (
+            <div className="user-button">
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          )}
+        </nav>
+      </header>
+    );
+  }
+
   return (
     <header className="navbar">
       <div ref={topRef} className="navbar-top">
-        <a href="#games" className="headerDaily">
-          <Image
-            src="/dailyLogo.png"
-            alt="Daily Logo"
-            className="dailyLogo"
-            width={40}
-            height={40}
-          />
-          Dailys
-        </a>
-        <h1>Elnan</h1>
+        {isSignedIn ? (
+          <Link href="/dailys" className="headerDaily">
+            {dailyButtonContent}
+          </Link>
+        ) : (
+          <SignInButton mode="modal" afterSignInUrl="/dailys">
+            <a className="headerDaily">{dailyButtonContent}</a>
+          </SignInButton>
+        )}
+        <h1 className={brunoAceSC.className}>Elnan</h1>
       </div>
 
       <div className="navbar-wrapper">
         <nav ref={navRef} className={`navbar-nav ${isSticky ? "sticky" : ""}`}>
-          <div className={`logo ${isSticky ? "visible" : ""}`}>Elnan</div>
+          <div
+            className={`logo ${isSticky ? "visible" : ""} ${brunoAceSC.className}`}
+            onClick={() => {
+              const homeSection = document.getElementById("home");
+              if (homeSection) {
+                homeSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            Elnan
+          </div>
           <ul>
             <li>
-              <button onClick={() => handleNavClick("home")}>Home</button>
+              <button onClick={() => handleNavClick("home")}>Hjem</button>
             </li>
             <li>
-              <button onClick={() => handleNavClick("games")}>Games</button>
+              <button onClick={() => handleNavClick("games")}>Spill</button>
             </li>
             <li>
-              <button onClick={() => handleNavClick("contact")}>Contact</button>
+              <button onClick={() => handleNavClick("contact")}>Kontakt</button>
             </li>
           </ul>
         </nav>
-        <a href="#games" className="headerWeekly">
+        <a href="https://spill.kikunnskap.no/" className="headerWeekly">
           Weeklys
         </a>
         <Image
-          src="/notteknekteneLogo.png"
+          src="/notteknekteneLogo.webp"
           alt="Notteknektene Logo"
           className="weeklyLogo"
           width={40}

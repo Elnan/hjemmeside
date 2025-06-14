@@ -1,0 +1,189 @@
+.container {
+  padding: 1rem 0;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inviteButton {
+  padding: 8px 16px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.inviteButton:hover {
+  background: #0051b3;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.75rem;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tab:hover {
+  color: #444;
+}
+
+.tab.active {
+  color: #222;
+  font-weight: 500;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.entry:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.entry.currentUser {
+  border-color: #e5e5e5;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.rank {
+  width: 2.5rem;
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0.75rem;
+}
+
+.username {
+  font-size: 1rem;
+  color: #444;
+}
+
+.score {
+  font-size: 0.875rem;
+  color: #666;
+  font-family: var(--font-mono);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modalContent h3 {
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.modalContent p {
+  margin: 0 0 16px 0;
+  color: #666;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.createButton {
+  padding: 8px 16px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.875rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}

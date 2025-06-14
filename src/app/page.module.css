@@ -1,33 +1,3 @@
-.section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  position: relative;
-}
-
-.gamesSection::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/games-background2.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  z-index: -1;
-}
-
-.contactSection {
-  padding-block: 100px;
-  margin-bottom: 300px;
-}
-
 .content {
   max-width: 800px;
   text-align: center;
@@ -44,67 +14,14 @@
   margin-bottom: 40px;
 }
 
-.imageContainer {
-  margin-top: 40px;
-}
-
-.imageContainer img {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.gamesContainer {
-  display: flex;
-  justify-content: center;
-  gap: 140px;
-  margin-top: 40px;
-}
-
-.gamesLogoSquare {
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: grey;
-  text-transform: uppercase;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-}
-
-.dailyLogo {
-  background-color: hsl(40 30% 90%);
-}
-
-.weeklyLogo {
-  background-color: hsl(10 40% 99%);
-}
-
-.socialsWrapper {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
+.section {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-
-.socialsWrapper li {
-  display: flex;
+  justify-content: center;
   align-items: center;
-}
-
-.socialText {
-  font-size: 1.5rem;
-  color: #5a3e3e;
-  font-weight: bold;
-  line-height: 1;
+  padding: 40px;
+  position: relative;
 }
 
 .cylinder {
@@ -116,15 +33,151 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.trapdoorContainer {
+.gamesSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/games-background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.gamesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 140px;
+  margin-top: 40px;
+}
+
+.gameButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 180px;
+  max-width: 270px;
+  min-height: 140px;
+  padding: 1.5rem 2.5rem;
+  border-radius: 18px;
+  box-shadow:
+    0 4px 24px rgba(79, 104, 80, 0.1),
+    0 1.5px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition:
+    transform 0.15s cubic-bezier(0.4, 2, 0.6, 1),
+    box-shadow 0.2s;
   position: relative;
-  width: 350px;
-  height: 120px;
+  outline: none;
+}
+
+.gameButton:active,
+.gameButton:focus {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(79, 104, 80, 0.13);
+}
+
+.gameButton:hover {
+  background: linear-gradient(120deg, #ddd 60%, #f5f5f5 100%);
+  box-shadow:
+    0 6px 32px rgba(79, 104, 80, 0.13),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px) scale(1.03);
+  /* color: var(--base-color); */
+}
+
+.dailyButton {
+  background-image: url("/DailyGame.webp");
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--base-color-dark);
+}
+
+/* Demping av fargene i bakgrunnsbildet */
+.dailyButton::before,
+.weeklyButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.45
+  ); /* Juster alpha for mer/mindre demping */
+  border-radius: 18px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dailyButton:hover .gameButtonTitle,
+.dailyButton:hover .gameButtonText {
+  color: var(--base-color-dark);
+}
+
+.weeklyButton {
+  background-image: url("/WeeklyGame.webp");
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--accent-color);
+}
+
+.weeklyButton:hover .gameButtonTitle,
+.weeklyButton:hover .gameButtonText {
+  color: var(--accent-color);
+}
+
+.gameButtonTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.gameButtonText {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 400;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.contactSection {
+  padding-block: 100px;
+  margin-bottom: 300px;
+}
+
+.contactRed {
+  color: var(--accent-color);
+}
+
+.contactGreen {
+  color: #4f6850;
+}
+
+.socialsWrapper {
+  list-style: none;
+  padding: 0;
   margin: 0 auto;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.socialLink {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .socialIconContainer {
@@ -132,11 +185,6 @@
   justify-content: center;
   align-items: center;
   width: 120px;
-}
-
-.socialIcon {
-  width: 60px;
-  height: 60px;
 }
 
 .textRectangle {
@@ -153,6 +201,17 @@
 }
 
 /* Trapdoor styles */
+
+.trapdoorContainer {
+  position: relative;
+  width: 350px;
+  height: 120px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .trapdoor {
   position: absolute;
@@ -181,14 +240,6 @@
   transform: translateY(100%);
 }
 
-.trapdoorContainer:hover .trapdoor.top {
-  transform: translateY(-100%);
-}
-
-.trapdoorContainer:hover .trapdoor.bottom {
-  transform: translateY(100%);
-}
-
 .trapdoorContainer.open .textRectangle {
   animation: liftUp 0.6s ease-in-out 0.4s forwards;
 }
@@ -202,12 +253,15 @@
   }
 }
 
-.socialLink {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-  height: 100%;
-  position: relative;
+@media (max-width: 900px) {
+  .gamesContainer {
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+  .gameButton {
+    min-width: 90vw;
+    max-width: 400px;
+    padding: 1.2rem 1.5rem;
+  }
 }

@@ -1,0 +1,249 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.mineCount,
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: #e5e5e5;
+  padding: 1px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.board:focus {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  display: flex;
+  gap: 1px;
+}
+
+.cell {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  padding: 0;
+  user-select: none;
+  position: relative;
+}
+
+.cell:hover:not(:disabled) {
+  background: #f5f5f5;
+}
+
+.cell.revealed {
+  background: #f8f8f8;
+}
+
+.cell.revealed:hover {
+  background: #f8f8f8;
+}
+
+.cell.flagged {
+  font-size: 1.125rem;
+}
+
+.cell.current {
+  box-shadow: inset 0 0 0 2px #666;
+}
+
+.cell.current.revealed {
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.gameOver {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.victory h3,
+.defeat h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1rem 0;
+}
+
+.victory p,
+.defeat p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.restartButton {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #444;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.restartButton:hover {
+  background: #333;
+  border-color: #333;
+}
+
+.controls {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.controls h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1rem 0;
+}
+
+.controls ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.controls li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.controls kbd {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: #f0f0f0;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: #666;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* Cell number colors */
+.cell[data-mines="1"] {
+  color: #2563eb;
+}
+.cell[data-mines="2"] {
+  color: #16a34a;
+}
+.cell[data-mines="3"] {
+  color: #dc2626;
+}
+.cell[data-mines="4"] {
+  color: #1d4ed8;
+}
+.cell[data-mines="5"] {
+  color: #991b1b;
+}
+.cell[data-mines="6"] {
+  color: #0d9488;
+}
+.cell[data-mines="7"] {
+  color: #111827;
+}
+.cell[data-mines="8"] {
+  color: #6b7280;
+}
+
+.dailyComplete {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.dailyComplete h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1.5rem 0;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.results p {
+  font-size: 1.125rem;
+  color: #444;
+  margin: 0;
+}
+
+.nextGame {
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.nextGame span {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  color: #888;
+}

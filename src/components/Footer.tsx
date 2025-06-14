@@ -14,6 +14,7 @@ export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Animerer footer-logo når den er synlig
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -33,8 +34,8 @@ export default function Footer() {
     };
   }, []);
 
+  // Endrer fargen på navbar-nav når footer-logo er animert inn
   useEffect(() => {
-    // Legg til/fjern klasse på navbar-nav når footer-logo er animert inn
     const nav = document.querySelector(".navbar-nav");
     if (!nav) return;
     if (isVisible) {
@@ -44,29 +45,7 @@ export default function Footer() {
     }
   }, [isVisible]);
 
-  useEffect(() => {
-    const nav = document.querySelector(".navbar-nav");
-    if (!nav || !footerRef.current) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        console.log("Footer observer:", {
-          ratio: entry.intersectionRatio,
-          top: entry.boundingClientRect.top,
-          isIntersecting: entry.isIntersecting,
-        });
-
-        if (entry.intersectionRatio >= 0.4) {
-          nav.classList.add("footer-almost-full");
-        } else {
-          nav.classList.remove("footer-almost-full");
-        }
-      },
-      { threshold: [0.4] }
-    );
-    observer.observe(footerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
+  // Fjerner underline på navbar-nav når man når bunnen av footer
   useEffect(() => {
     const nav = document.querySelector(".navbar-nav");
     if (!nav) return;
@@ -74,9 +53,9 @@ export default function Footer() {
       const atBottom =
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
       if (atBottom) {
-        nav.classList.add("footer-almost-full");
+        nav.classList.add("footer-at-top");
       } else {
-        nav.classList.remove("footer-almost-full");
+        nav.classList.remove("footer-at-top");
       }
     };
     window.addEventListener("scroll", onScroll);
@@ -84,7 +63,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="scroll-page">
+    <div className="footer-wrapper">
       <section className="footer-small">
         <div className="footer-small-content">
           <div className="footer-small-row">
@@ -94,11 +73,10 @@ export default function Footer() {
                 <a href="mailto:Olavelnan@gmail.com">Olavelnan@gmail.com</a>
               </div>
               <div>
-                Telefon: <a href="tel:+4712345678">+47 12 34 56 78</a>
+                Telefon: <a href="tel:+4712345678">+47 48 29 46 20</a>
               </div>
-              <div>Adresse: 1234 Oslo, Norge</div>
             </div>
-            <div className="footer-small-socials"></div>
+
             <ul className="footer-small-links">
               <li>
                 <a href="https://www.instagram.com/oelnan/">Instagram</a>
@@ -145,36 +123,34 @@ export default function Footer() {
                 <a href="mailto:Olavelnan@gmail.com">Olavelnan@gmail.com</a>
               </div>
               <div>
-                Telefon: <a href="tel:+4712345678">+47 12 34 56 78</a>
+                Telefon: <a href="tel:+4712345678">+47 48 29 46 20</a>
               </div>
-              <div>Adresse: 1234 Oslo, Norge</div>
-            </div>
-            <div className="footer-large-weeklys">
-              <strong>Weeklys</strong>
-              <ul></ul>
-            </div>
-            <div className="footer-large-dailys">
-              <strong>Dailys</strong>
-              <ul></ul>
             </div>
 
             <div className="footer-large-sitemap">
-              <strong style={{ textDecoration: "underline" }}>Sitemap</strong>
-              <ul className="footer-large-sitemap-links">
+              <ul className="footer-large-sitemap-links footer-large-mainlinks">
                 <li>
                   <a href="#home">Hjem</a>
-                </li>
-                <li>
-                  <a href="#games">Spill</a>
                 </li>
                 <li>
                   <a href="#contact">Kontakt</a>
                 </li>
                 <li>
-                  <a href="#privacy">Personvern</a>
-                </li>
-                <li>
-                  <a href="#terms">Vilkår</a>
+                  <a href="#games">Spill</a>
+                  <ul className="footer-large-sitemap-links footer-large-dailylinks">
+                    <li>
+                      <a href="/dailys?game=ShapeFit">ShapeFit</a>
+                    </li>
+                    <li>
+                      <a href="/dailys?game=FallingSquare">FallingSquare</a>
+                    </li>
+                    <li>
+                      <a href="/dailys?game=Skier">Skier</a>
+                    </li>
+                    <li>
+                      <a href="/dailys?game=Connections">Connections</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

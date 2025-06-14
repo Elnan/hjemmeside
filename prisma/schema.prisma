@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String        @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  leagues       LeagueMember[]
+  scores        LeagueScore[]
+  ownedLeagues  League[]      @relation("LeagueOwner")
+}
+
+model League {
+  id          String         @id @default(cuid())
+  name        String
+  createdAt   DateTime      @default(now())
+  createdBy   User          @relation("LeagueOwner", fields: [createdById], references: [id])
+  createdById String
+  inviteCode  String        @unique
+  isPrivate   Boolean       @default(false)
+  members     LeagueMember[]
+  scores      LeagueScore[]
+}
+
+model LeagueMember {
+  id        String   @id @default(cuid())
+  league    League   @relation(fields: [leagueId], references: [id])
+  leagueId  String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  role      String   @default("MEMBER") // OWNER, ADMIN, MEMBER
+  joinedAt  DateTime @default(now())
+
+  @@unique([leagueId, userId])
+}
+
+model LeagueScore {
+  id        String   @id @default(cuid())
+  league    League   @relation(fields: [leagueId], references: [id])
+  leagueId  String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  gameId    String
+  score     Int
+  date      DateTime @default(now())
+
+  @@index([leagueId, gameId, date])
+  @@index([userId, gameId, date])
+} 

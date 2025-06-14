@@ -1,12 +1,22 @@
+:root {
+  --base-color: #e6ede7;
+  --base-color-dark: #4f6850;
+  --accent-color: #bb5147;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
 }
 
+*:focus-visible {
+  outline: 2px solid var(--base-color-dark);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-  /* scroll-snap-type: y mandatory; */
 }
 
 body {

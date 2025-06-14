@@ -22,7 +22,7 @@ export default function Home() {
               // Legg til elementet i visibleIndexes når det er synlig
               setTimeout(() => {
                 setVisibleIndexes((prev) => [...new Set([...prev, index])]);
-              }, 600); // Forsinkelse på 500ms før animasjonen starter
+              }, 600); // Forsinkelse på 600ms før animasjonen starter
             } else {
               // Fjern elementet fra visibleIndexes når det ikke lenger er synlig
               setVisibleIndexes((prev) => prev.filter((i) => i !== index));
@@ -46,18 +46,18 @@ export default function Home() {
   const socialMedia = [
     {
       name: "Bluesky",
-      logo: "/bluesky.png",
+      logo: "/bluesky.webp",
       link: "https://bsky.app/profile/elbando.bsky.social",
     },
-    { name: "GitHub", logo: "/github2.png", link: "https://github.com/Elnan" },
+    { name: "GitHub", logo: "/github.webp", link: "https://github.com/Elnan" },
     {
       name: "Instagram",
-      logo: "/instagram.png",
+      logo: "/instagram.webp",
       link: "https://www.instagram.com/oelnan/",
     },
     {
       name: "LinkedIn",
-      logo: "/linkedin2.png",
+      logo: "/linkedin.webp",
       link: "https://www.linkedin.com/in/olav-elnan-1b184990",
     },
   ];
@@ -66,15 +66,20 @@ export default function Home() {
     <div>
       <section id="home" className={`${styles.section} ${styles.homeSection}`}>
         <div className={styles.content}>
-          <h1>Welcome to My Website</h1>
+          <h1>Velkommen</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure
-            amet voluptatibus, non facere harum impedit adipisci odio qui, iusto
-            ad officiis voluptatem aut ipsum corporis quia aperiam unde ea
-            cumque reprehenderit nisi? Rem, hic. Asperiores quia, totam eligendi
-            aliquid possimus magni deserunt similique vel soluta? Ullam non in
-            temporibus tempore, maxime quod quasi architecto ipsa aut nesciunt
-            autem nulla excepturi asperiores perspiciatis sed alias quae?
+            Jeg er en utvikler og problemløser med lidenskap for teknologi,
+            design og spill. På denne siden finner du et utvalg av mine
+            prosjekter, tjenester og interaktive spill
+            <br />
+            <br />
+            - alt laget for å engasjere, utfordre og inspirere -
+            <br />
+            <br />
+            Enten du ønsker en moderne nettside, underholdning til
+            arrangementer, eller bare er nysgjerrig på hva jeg kan tilby, er du
+            hjertelig velkommen til å utforske. Ta gjerne kontakt for en
+            uforpliktende prat om dine behov eller idéer!
           </p>
           <div className={styles.cylinder}></div>
         </div>
@@ -85,22 +90,40 @@ export default function Home() {
         className={`${styles.section} ${styles.gamesSection}`}
       >
         <div className={styles.content}>
-          <h1>Games</h1>
+          <h1>Spill</h1>
           <p>
-            Her vil det komme daglige spill som du kan spille, enten alene,
-            eller konkurrere med venner. Det vil også komme ukentlige spill som
-            du kan spille for å vinne premier. Spillene vil variere fra
-            ordspill, sudoku, og andre utfordringer. Dette er for tiden under
-            konstruksjon, og dermed ikke tilgjengelig enda. Følg med for å se
-            hvilke spill som er tilgjengelige!
+            Jeg har et pågående prosjekt om å lage spill som kan underholde og
+            utfordre deg. Her er det spill som du kan spille, enten alene, eller
+            konkurrere med venner. Det vil også komme ukentlige eller
+            sesongbaserte spill etterhvert. Spillene vil variere fra ordspill,
+            sudoku, og andre utfordringer.
+            <br />
+            Dette er for tiden under konstruksjon, så følg med for å se hvilke
+            spill som er tilgjengelige!
           </p>
           <div className={styles.gamesContainer}>
-            <div className={`${styles.gamesLogoSquare} ${styles.dailyLogo}`}>
-              <span>Daily</span>
-            </div>
-            <div className={`${styles.gamesLogoSquare} ${styles.weeklyLogo}`}>
-              <span>Weekly</span>
-            </div>
+            <button
+              className={`${styles.gameButton} ${styles.dailyButton}`}
+              onClick={() => window.open("/dailys", "_self")}
+            >
+              <span className={styles.gameButtonTitle}>Dailys</span>
+              <span className={styles.gameButtonText}>
+                Nye utfordringer hver dag
+              </span>
+            </button>
+            <button
+              className={`${styles.gameButton} ${styles.weeklyButton}`}
+              onClick={() =>
+                window.open("https://spill.kikunnskap.no/", "_blank")
+              }
+            >
+              <span className={styles.gameButtonTitle}>Weeklys</span>
+              <span className={styles.gameButtonText}>
+                Ukentlige spill og konkurranser
+                <br />
+                (Ekstern lenke)
+              </span>
+            </button>
           </div>
         </div>
       </section>
@@ -110,15 +133,22 @@ export default function Home() {
         className={`${styles.section} ${styles.contactSection}`}
       >
         <div className={styles.content}>
-          <h1>Contact</h1>
+          <h1>Kontakt</h1>
           <p>
-            Her kommer en tekst om tjenester jeg tilbyr, som nettsider,
-            underholdning til eventer, osv. Dette er en kort introduksjon til
-            hva jeg kan hjelpe deg med. Hvis du er interessert i å vite mer, kan
-            du ta kontakt med meg via kontaktskjemaet nedenfor.
+            Ta gjerne kontakt for en uforpliktende prat om dine behov,
+            prosjekter eller idéer. Jeg tilbyr tjenester innen{" "}
+            <span className={styles.contactRed}>
+              webutvikling, design og spillutvikling
+            </span>
+            , samt{" "}
+            <span className={styles.contactGreen}>
+              underholdningspakker til arrangementer
+            </span>
+            . Fyll ut kontaktskjemaet nedenfor, så svarer jeg deg så raskt som
+            mulig. Ser frem til å høre fra deg!
           </p>
           <ContactCards />
-          <p>Follow on social media:</p>
+          <p>Følg meg:</p>
           <ul className={styles.socialsWrapper}>
             {socialMedia.map((social, index) => (
               <li
@@ -141,7 +171,7 @@ export default function Home() {
                   <div className={styles.socialIconContainer}>
                     <Image
                       src={social.logo}
-                      alt={social.name}
+                      alt={`Ikon for ${social.name}`}
                       className={styles.socialIcon}
                       width={60}
                       height={60}

@@ -1,0 +1,218 @@
+.container {
+  padding: 1rem 0;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actionButton {
+  flex: 1;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  color: #666;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  border-color: #999;
+  background: rgba(0, 0, 0, 0.02);
+  color: #444;
+}
+
+.leagues {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.league {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.league:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.leagueInfo {
+  flex: 1;
+}
+
+.leagueName {
+  display: block;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.25rem;
+}
+
+.leagueMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.privateBadge {
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.125rem 0.375rem;
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.leagueActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.manageButton,
+.leaveButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: transparent;
+  color: #666;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.manageButton:hover,
+.leaveButton:hover {
+  border-color: #999;
+  color: #444;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modalContent h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1.5rem 0;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.formGroup input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.formGroup input[type="text"]:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.checkbox span {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.cancelButton,
+.submitButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton {
+  background: transparent;
+  border: 1px solid #e5e5e5;
+  color: #666;
+}
+
+.cancelButton:hover {
+  border-color: #999;
+  color: #444;
+}
+
+.submitButton {
+  background: #444;
+  border: 1px solid #444;
+  color: white;
+}
+
+.submitButton:hover {
+  background: #333;
+  border-color: #333;
+}

@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Elnan - Daily Games
 
-## Getting Started
+Dette er et moderne Next.js-prosjekt for min personlige hjemmeside, med daglige og ukentlige spill, samt tilbud av tjenester innen webutvikling, design og underholdning.
 
-First, run the development server:
+## Innhold
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Daglige spill**: Spill som ShapeFit, Connections, FallingSquare m.fl.
+- **Ukentlige spill**: Eksterne konkurranser og spill.
+- **Tjenester**: Webutvikling, design, underholdning til arrangementer.
+- **Kontakt**: Skjema og kontaktinfo for henvendelser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Teknologi
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/) (App Router)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Clerk](https://clerk.com/) for autentisering
+- [Prisma](https://www.prisma.io/) for database
+- [Resend](https://resend.com/) for e-post
+- [PurgeCSS](https://purgecss.com/) og [ts-prune](https://github.com/nadeesha/ts-prune) for opprydding
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## KI og eksperimentering
 
-## Learn More
+En del av spillene og funksjonaliteten er laget med hjelp av kunstig intelligens. Jeg har eksperimentert med både GitHub Copilot og Cursor med Claude for å få både få inspirasjon, kodeforslag og hjelp med problemløsning, men også for å prøve å få KI til å lage spillene for meg.
 
-To learn more about Next.js, take a look at the following resources:
+## Kodekvalitet og opprydding
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ts-prune: `npx ts-prune` for å finne ubrukt TypeScript-kode
+- PurgeCSS: `npx purgecss --css src/**/*.css --content src/**/*.{js,jsx,ts,tsx,html}` for å finne ubrukt CSS
+- npm prune: `npm prune` for å rydde opp i node_modules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Kontakt
 
-## Deploy on Vercel
+- E-post: [Olavelnan@gmail.com](mailto:Olavelnan@gmail.com)
+- Telefon: +47 48 29 46 20
+- Instagram: [@oelnan](https://www.instagram.com/oelnan/)
+- GitHub: [Elnan](https://github.com/Elnan)
+- LinkedIn: [Olav Elnan](https://www.linkedin.com/in/olav-elnan-1b184990)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Lisens
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dette prosjektet er åpent for læring og inspirasjon. Ta kontakt for samarbeid eller spørsmål!
