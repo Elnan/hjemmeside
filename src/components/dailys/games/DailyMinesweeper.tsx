@@ -28,7 +28,6 @@ interface GameState {
 
 interface DailyMinesweeperProps {
   onGameComplete?: (score: number) => void;
-  difficulty?: "easy" | "medium" | "hard";
 }
 
 const DIFFICULTY_SETTINGS = {
@@ -37,10 +36,7 @@ const DIFFICULTY_SETTINGS = {
   hard: { size: 22, mines: 99 },
 };
 
-export const DailyMinesweeper: FC<DailyGameProps> = ({
-  onGameComplete,
-  difficulty = "medium",
-}) => {
+export const DailyMinesweeper: FC<DailyGameProps> = ({ onGameComplete }) => {
   const { user } = useUser();
   const [gameState, setGameState] = useState<GameState>(() => initializeGame());
   const boardRef = useRef<HTMLDivElement>(null);
@@ -64,7 +60,7 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({
   }, []);
 
   function initializeGame(): GameState {
-    const { size, mines } = DIFFICULTY_SETTINGS[difficulty];
+    const { size, mines } = DIFFICULTY_SETTINGS["medium"];
     const board = Array(size)
       .fill(null)
       .map(() =>
@@ -319,7 +315,7 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({
 
   function calculateScore(startTime: number, endTime: number): number {
     const timeInSeconds = Math.floor((endTime - startTime) / 1000);
-    const { size, mines } = DIFFICULTY_SETTINGS[difficulty];
+    const { size, mines } = DIFFICULTY_SETTINGS["medium"];
     const maxScore = size * size * 10;
     const timeDeduction = Math.floor(timeInSeconds / 10);
     return Math.max(0, maxScore - timeDeduction);
@@ -373,8 +369,8 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({
                       ? cell.isMine
                         ? ", mine"
                         : cell.neighborMines > 0
-                        ? `, ${cell.neighborMines} nearby mines`
-                        : ", empty"
+                          ? `, ${cell.neighborMines} nearby mines`
+                          : ", empty"
                       : ""
                   }${cell.isFlagged ? ", flagged" : ""}`}
                 >
@@ -382,11 +378,11 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({
                     ? cell.isMine
                       ? "💥"
                       : cell.neighborMines > 0
-                      ? cell.neighborMines
-                      : ""
+                        ? cell.neighborMines
+                        : ""
                     : cell.isFlagged
-                    ? "🚩"
-                    : ""}
+                      ? "🚩"
+                      : ""}
                 </button>
               );
             })}
