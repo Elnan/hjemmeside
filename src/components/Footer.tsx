@@ -145,7 +145,7 @@ export default function Footer() {
                       <a href="/dailys?game=FallingSquare">FallingSquare</a>
                     </li>
                     <li>
-                      <a href="/dailys?game=Skier">Skier</a>
+                      <a href="/dailys?game=Minesweeper">Minesweeper</a>
                     </li>
                     <li>
                       <a href="/dailys?game=Connections">Connections</a>

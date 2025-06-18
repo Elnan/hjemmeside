@@ -355,8 +355,3 @@
     font-size: 18vw;
   }
 }
-
-html,
-body {
-  overflow-x: hidden;
-}

@@ -140,6 +140,10 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-wrapper">
+        <div
+          className="navbar-placeholder"
+          style={{ display: isSticky ? "block" : "none" }}
+        />
         <nav ref={navRef} className={`navbar-nav ${isSticky ? "sticky" : ""}`}>
           <div
             className={`logo ${isSticky ? "visible" : ""} ${brunoAceSC.className}`}
