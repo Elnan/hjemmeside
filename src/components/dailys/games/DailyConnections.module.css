@@ -85,14 +85,14 @@
 
 .wordButton.focused {
   outline: none;
-  box-shadow: 0 0 0 3px #4a90e2;
-  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .wordButton.selected {
-  background-color: #4a90e2;
-  color: white;
-  border-color: #4a90e2;
+  background-color: var(--base-color);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .wordButton.found {
@@ -179,7 +179,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
-  background-color: #4a90e2;
+  background-color: var(--base-color-dark);
   border: none;
   border-radius: 12px;
   cursor: pointer;

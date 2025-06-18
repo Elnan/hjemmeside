@@ -27,7 +27,6 @@ export default function Navbar() {
       if (!isDailysPage && topRef.current && navRef.current) {
         const topBottom = topRef.current.getBoundingClientRect().bottom;
         const navTop = navRef.current.getBoundingClientRect().top;
-
         if (navTop <= 0 && topBottom <= 0) {
           setIsSticky(true);
         } else {
@@ -35,7 +34,6 @@ export default function Navbar() {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isDailysPage]);
@@ -128,12 +126,14 @@ export default function Navbar() {
     <header className="navbar">
       <div ref={topRef} className="navbar-top">
         {isSignedIn ? (
-          <Link href="/dailys" className="headerDaily">
+          <Link href="/dailys" className="headerDaily" tabIndex={0}>
             {dailyButtonContent}
           </Link>
         ) : (
           <SignInButton mode="modal" afterSignInUrl="/dailys">
-            <a className="headerDaily">{dailyButtonContent}</a>
+            <a className="headerDaily" tabIndex={0}>
+              {dailyButtonContent}
+            </a>
           </SignInButton>
         )}
         <h1 className={brunoAceSC.className}>Elnan</h1>
@@ -150,6 +150,7 @@ export default function Navbar() {
               }
             }}
             style={{ cursor: "pointer" }}
+            tabIndex={-1}
           >
             Elnan
           </div>
@@ -165,16 +166,22 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        <a href="https://spill.kikunnskap.no/" className="headerWeekly">
-          Weeklys
-        </a>
-        <Image
-          src="/notteknekteneLogo.webp"
-          alt="Notteknektene Logo"
-          className="weeklyLogo"
-          width={40}
-          height={40}
-        />
+        <div className="weeklyLinkWrapper">
+          <a
+            href="https://spill.kikunnskap.no/"
+            className="headerWeekly"
+            tabIndex={0}
+          >
+            Weeklys
+          </a>
+          <Image
+            src="/notteknekteneLogo.webp"
+            alt="Notteknektene Logo"
+            className="weeklyLogo"
+            width={40}
+            height={40}
+          />
+        </div>
       </div>
     </header>
   );

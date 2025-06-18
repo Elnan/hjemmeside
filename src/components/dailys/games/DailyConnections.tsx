@@ -94,6 +94,35 @@ export const DailyConnections: FC<DailyGameProps> = ({ onGameComplete }) => {
   });
 
   const gridRef = useRef<HTMLDivElement>(null);
+  const [keyboardActive, setKeyboardActive] = useState(false);
+
+  // Track if keyboard navigation is used
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        [
+          "Tab",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          " ",
+          "Enter",
+        ].includes(e.key)
+      ) {
+        setKeyboardActive(true);
+      }
+    };
+    const handleMouseDown = () => {
+      setKeyboardActive(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDown);
+    };
+  }, []);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -223,13 +252,13 @@ export const DailyConnections: FC<DailyGameProps> = ({ onGameComplete }) => {
 
   // Focus management
   useEffect(() => {
-    if (!gameState.isGameOver) {
+    if (!gameState.isGameOver && keyboardActive) {
       const buttons = gridRef.current?.querySelectorAll("button");
       if (buttons) {
         buttons[gameState.focusedWordIndex]?.focus();
       }
     }
-  }, [gameState.focusedWordIndex, gameState.isGameOver]);
+  }, [gameState.focusedWordIndex, gameState.isGameOver, keyboardActive]);
 
   const handleWordClick = (word: string) => {
     if (gameState.isGameOver) return;
@@ -350,7 +379,8 @@ export const DailyConnections: FC<DailyGameProps> = ({ onGameComplete }) => {
               const isFound = gameState.foundGroups.some((group) =>
                 group.words.includes(word)
               );
-              const isFocused = index === gameState.focusedWordIndex;
+              const isFocused =
+                keyboardActive && index === gameState.focusedWordIndex;
               const isRemoving = removingWords.includes(word);
 
               if (isFound && !isRemoving) return null;
@@ -367,7 +397,7 @@ export const DailyConnections: FC<DailyGameProps> = ({ onGameComplete }) => {
                   disabled={isFound || gameState.isGameOver}
                   aria-pressed={isSelected}
                   aria-disabled={isFound || gameState.isGameOver}
-                  tabIndex={isFocused ? 0 : -1}
+                  tabIndex={keyboardActive && isFocused ? 0 : -1}
                 >
                   {word}
                 </button>

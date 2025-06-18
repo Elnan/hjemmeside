@@ -104,7 +104,15 @@ export default function Home() {
           <div className={styles.gamesContainer}>
             <button
               className={`${styles.gameButton} ${styles.dailyButton}`}
-              onClick={() => window.open("/dailys", "_self")}
+              onClick={() => {
+                if (window.innerWidth <= 900) {
+                  alert(
+                    "Dailys er foreløpig ikke tilgjengelig for mobilbrukere. Prøv på en større skjerm!"
+                  );
+                } else {
+                  window.open("/dailys", "_self");
+                }
+              }}
             >
               <span className={styles.gameButtonTitle}>Dailys</span>
               <span className={styles.gameButtonText}>
@@ -136,16 +144,11 @@ export default function Home() {
           <h1>Kontakt</h1>
           <p>
             Ta gjerne kontakt for en uforpliktende prat om dine behov,
-            prosjekter eller idéer. Jeg tilbyr tjenester innen{" "}
-            <span className={styles.contactRed}>
-              webutvikling, design og spillutvikling
-            </span>
-            , samt{" "}
-            <span className={styles.contactGreen}>
-              underholdningspakker til arrangementer
-            </span>
-            . Fyll ut kontaktskjemaet nedenfor, så svarer jeg deg så raskt som
-            mulig. Ser frem til å høre fra deg!
+            prosjekter eller idéer. Jeg tilbyr tjenester innen
+            <b> webutvikling, design og spillutvikling</b>, samt{" "}
+            <b>underholdningspakker til arrangementer</b>. Fyll ut
+            kontaktskjemaet nedenfor, så svarer jeg deg så raskt som mulig. Ser
+            frem til å høre fra deg!
           </p>
           <ContactCards />
           <p>Følg meg:</p>

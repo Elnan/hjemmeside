@@ -66,25 +66,33 @@
   cursor: pointer;
 }
 
-.headerWeekly {
+.weeklyLinkWrapper {
   position: absolute;
   top: 10px;
   right: 20px;
   z-index: 3;
+  display: flex;
+  align-items: center;
+}
+
+.headerWeekly {
+  position: relative;
+  z-index: 2;
 }
 
 .weeklyLogo {
   position: absolute;
-  top: -19%;
-  right: 9%;
+  top: -120%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  opacity: 0.8;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.5s;
+  pointer-events: none;
 }
 
 .headerWeekly:hover + .weeklyLogo {
-  transform: translate(0%, 80%);
+  transform: translateY(30%);
 }
 
 /* Navbar Wrapper */
@@ -149,10 +157,6 @@
   cursor: pointer;
 }
 
-/* .navbar-nav a:visited {
-  color: red;
-} */
-
 /* Logo styling */
 .navbar .logo,
 .navbar-nav .logo {
@@ -196,77 +200,16 @@
   box-shadow: none;
 }
 
-@media (max-width: 900px) {
-  .navbar-top {
-    font-size: 1.2rem;
-    gap: 10px;
-    height: 40vw;
-  }
-  .navbar-nav ul {
-    gap: 10px;
-  }
-  .logo {
-    left: 24px;
-    font-size: 1.1rem;
-  }
-  .navbar-wrapper {
-    height: 20vw;
-  }
-}
-
 @media (max-width: 700px) {
+  .navbar-nav.sticky,
   .headerDaily,
   .headerWeekly,
-  .dailyLogo,
-  .weeklyLogo {
-    display: none !important;
+  .weeklyLogo,
+  .dailyLogo {
+    display: none;
   }
-  .navbar-nav ul {
-    gap: 10px;
-  }
-  .logo {
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
-    position: absolute;
-  }
-}
 
-@media (max-width: 600px) {
-  .navbar {
-    padding: 0 2vw;
+  .navbar-wrapper {
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
-  .navbar-top {
-    font-size: 1rem;
-    gap: 6px;
-    height: 24vw;
-  }
-  .navbar-nav {
-    height: 54px;
-  }
-  .logo {
-    left: 12px;
-    font-size: 0.95rem;
-  }
-  .navbar-nav ul {
-    gap: 6px;
-  }
-  .headerDaily,
-  .headerWeekly {
-    font-size: 1rem;
-    left: 8px;
-    right: 8px;
-  }
-}
-
-/* User button styles */
-.user-button {
-  position: absolute;
-  right: 2rem;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-nav:has(.user-button) ul {
-  margin-right: 60px;
 }

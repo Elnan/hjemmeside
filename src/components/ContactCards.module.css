@@ -17,21 +17,23 @@
 
 .contactCardRow {
   display: flex;
-  gap: 2rem;
+  gap: 1.2rem;
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .contactCard {
-  flex: 1;
-  min-width: 280px;
-  max-width: 350px;
+  flex: 1 1 180px;
+  min-width: 180px;
+  max-width: 260px;
   background: #ffffff;
   border: 1px solid var(--base-color);
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
+  padding: 1.2rem 1rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -187,21 +189,76 @@
 
 @media (max-width: 768px) {
   .contactCardRow {
-    flex-direction: column;
-    align-items: center;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 0.7rem;
+    padding: 0 1vw;
+    margin: 0 0 4.5rem 0; /* Legg til ekstra margin under rad av knapper */
   }
-
   .contactCard {
-    width: 100%;
+    flex: 1 1 45%;
+    min-width: 0;
     max-width: none;
+    height: 100%;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #fff;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      box-shadow 0.2s;
   }
-
+  .contactCardRow > .contactCard:nth-child(3) {
+    flex-basis: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin-bottom: 1.2rem; /* Ekstra avstand under siste knapp */
+  }
   .contactCardFormBox {
-    width: 90%;
-    padding: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
   }
-
-  .serviceTitle h2 {
+  .contactCardTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3436;
+    margin: 0;
+    padding: 0;
+  }
+  .contactCardDesc,
+  .serviceFeatures {
+    display: none;
+  }
+  .contactCardIcon {
+    display: block;
     font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .contactCardRow {
+    max-width: 100%;
+    gap: 0.7rem;
+  }
+  .contactCard {
+    min-width: 140px;
+    max-width: 200px;
+    padding: 1rem 0.5rem;
   }
 }

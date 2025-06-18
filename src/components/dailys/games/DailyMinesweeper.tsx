@@ -40,6 +40,7 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({ onGameComplete }) => {
   const { user } = useUser();
   const [gameState, setGameState] = useState<GameState>(() => initializeGame());
   const boardRef = useRef<HTMLDivElement>(null);
+  const [keyboardActive, setKeyboardActive] = useState(false);
 
   // Check if the user has already played today
   useEffect(() => {
@@ -117,6 +118,36 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({ onGameComplete }) => {
     boardRef.current?.focus();
   }, []);
 
+  // Track if keyboard navigation is used
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        [
+          "Tab",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          " ",
+          "Enter",
+          "f",
+          "F",
+        ].includes(e.key)
+      ) {
+        setKeyboardActive(true);
+      }
+    };
+    const handleMouseDown = () => {
+      setKeyboardActive(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDown);
+    };
+  }, []);
+
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -170,6 +201,25 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({ onGameComplete }) => {
       return () => board.removeEventListener("keydown", handleKeyDown);
     }
   }, [gameState.currentPosition, gameState.gameOver]);
+
+  // Focus management
+  useEffect(() => {
+    if (!gameState.gameOver && keyboardActive) {
+      const board = boardRef.current;
+      if (board) {
+        const buttons = board.querySelectorAll("button");
+        const [currentY, currentX] = gameState.currentPosition;
+        const size = gameState.board.length;
+        const index = currentY * size + currentX;
+        buttons[index]?.focus();
+      }
+    }
+  }, [
+    gameState.currentPosition,
+    gameState.gameOver,
+    keyboardActive,
+    gameState.board,
+  ]);
 
   function createSeededRandom(seed: string) {
     let hash = 0;
@@ -350,6 +400,7 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({ onGameComplete }) => {
           <div key={y} className={styles.row} role="row">
             {row.map((cell, x) => {
               const isCurrent =
+                keyboardActive &&
                 y === gameState.currentPosition[0] &&
                 x === gameState.currentPosition[1];
               return (
@@ -373,6 +424,7 @@ export const DailyMinesweeper: FC<DailyGameProps> = ({ onGameComplete }) => {
                           : ", empty"
                       : ""
                   }${cell.isFlagged ? ", flagged" : ""}`}
+                  tabIndex={keyboardActive && isCurrent ? 0 : -1}
                 >
                   {cell.isRevealed
                     ? cell.isMine
