@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import { Gowun_Dodum, Bruno_Ace_SC } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -89,14 +88,10 @@ export default function RootLayout({
       className={`${gowunDodum.className} ${brunoAceSC.className}`}
     >
       <body>
-        <ClerkProvider
-          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-        >
-          <Navbar />
-          <main>{children}</main>
-          <Analytics />
-          <Footer />
-        </ClerkProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Analytics />
+        <Footer />
       </body>
     </html>
   );

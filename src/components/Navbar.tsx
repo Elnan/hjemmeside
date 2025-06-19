@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Bruno_Ace_SC } from "next/font/google";
-import { SignInButton, useUser, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
@@ -18,7 +17,6 @@ export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
-  const { isSignedIn } = useUser();
   const pathname = usePathname();
   const isDailysPage = pathname === "/dailys";
 
@@ -112,11 +110,6 @@ export default function Navbar() {
               </a>
             </li>
           </ul>
-          {isSignedIn && (
-            <div className="user-button">
-              <UserButton afterSignOutUrl="/" />
-            </div>
-          )}
         </nav>
       </header>
     );
@@ -125,20 +118,11 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div ref={topRef} className="navbar-top">
-        {isSignedIn ? (
-          <Link href="/dailys" className="headerDaily" tabIndex={0}>
-            {dailyButtonContent}
-          </Link>
-        ) : (
-          <SignInButton mode="modal" afterSignInUrl="/dailys">
-            <a className="headerDaily" tabIndex={0}>
-              {dailyButtonContent}
-            </a>
-          </SignInButton>
-        )}
+        <Link href="/dailys" className="headerDaily" tabIndex={0}>
+          {dailyButtonContent}
+        </Link>
         <h1 className={brunoAceSC.className}>Elnan</h1>
       </div>
-
       <div className="navbar-wrapper">
         <div
           className="navbar-placeholder"
